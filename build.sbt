@@ -14,3 +14,10 @@ lazy val environment = (project in file("environment"))
     name := projectName("environment"),
     commonSettings
   )
+
+lazy val command-controller = (project in file("command-controller"))
+  .settings(
+    name := projectName("command-controller"),
+    commonSettings
+  )
+
