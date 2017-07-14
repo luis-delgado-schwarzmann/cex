@@ -8,7 +8,15 @@ val commonSettings = Seq(
   crossPaths := false
 )
 
+/*----------------------*/
+/* DEPENDENCIES SECTION */
+/*----------------------*/
+lazy val springBoot: ModuleID  = "org.springframework.boot" % "spring-boot" % "1.5.4.RELEASE"
 
+
+/*----------------*/
+/* BUILDS SECTION */
+/*----------------*/
 lazy val environment = (project in file("environment"))
   .settings(
     name := projectName("environment"),
@@ -18,6 +26,7 @@ lazy val environment = (project in file("environment"))
 lazy val command_controller = (project in file("command-controller"))
   .settings(
     name := projectName("command-controller"),
-    commonSettings
+    commonSettings,
+    libraryDependencies += springBoot
   )
 
