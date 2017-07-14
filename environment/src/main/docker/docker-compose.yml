@@ -1,0 +1,10 @@
+version: '2'
+services:
+  dock-cex-postgres:
+    image: dock-cex-postgres
+    container_name: dock-cex-postgres
+    hostname: dock-cex-postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./shared-folder:/tmp/shared
