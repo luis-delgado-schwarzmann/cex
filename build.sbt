@@ -17,20 +17,31 @@ lazy val springBoot: ModuleID  = "org.springframework.boot" % "spring-boot" % "1
 lazy val springBootStarterWeb: ModuleID  = "org.springframework.boot" % "spring-boot-starter-web" % "1.5.4.RELEASE"
 lazy val springBootStarterTest: ModuleID  = "org.springframework.boot" % "spring-boot-starter-test" % "1.5.4.RELEASE" % "test"
 lazy val jaywayJsonPath: ModuleID  = "com.jayway.jsonpath" % "json-path" % "2.4.0" % "test"
-
+lazy val postgresJDBC: ModuleID = "org.postgresql" % "postgresql" % "42.1.3"
 
 
 /*----------------*/
 /* BUILDS SECTION */
 /*----------------*/
 
+lazy val root = (project in file("."))
+  .disablePlugins(FlywayPlugin)
+
 lazy val environment = (project in file("environment"))
   .settings(
     name := projectName("environment"),
-    commonSettings
+    commonSettings,
+    flywayUrl := "jdbc:postgresql://localhost:5432/",
+    flywayUser := "postgres",
+    flywayPassword := "",
+    flywayLocations := Seq("classpath:db/migration"),
+    libraryDependencies ++= Seq(
+      postgresJDBC
+    )
   )
 
 lazy val command_controller = (project in file("command-controller"))
+  .disablePlugins(FlywayPlugin)
   .settings(
     name := projectName("command-controller"),
     commonSettings,
