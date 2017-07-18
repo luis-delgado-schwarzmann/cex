@@ -1,4 +1,4 @@
-
+import com.typesafe.config.{Config, ConfigFactory}
 
 val mainName = "dock-cex"
 def projectName(s: String) = s"${mainName}-${s}"
@@ -20,6 +20,9 @@ lazy val jaywayJsonPath: ModuleID  = "com.jayway.jsonpath" % "json-path" % "2.4.
 lazy val postgresJDBC: ModuleID = "org.postgresql" % "postgresql" % "42.1.3"
 
 
+
+
+
 /*----------------*/
 /* BUILDS SECTION */
 /*----------------*/
@@ -29,11 +32,25 @@ lazy val root = (project in file("."))
 
 lazy val environment = (project in file("environment"))
   .settings(
+
+    // Flyway external config file stuff
+    FlywayConf.conf := {
+      val flywayFilePath: String = "db/flyway/flyway.properties"
+      val flywayConfFile: Config =  ConfigFactory.parseFile((resourceDirectory in Compile).value / flywayFilePath)
+
+      println(flywayConfFile)
+      Map(
+        "url" -> flywayConfFile.getString("flyway.url"),
+        "user" -> flywayConfFile.getString("flyway.user"),
+        "password" -> flywayConfFile.getString("flyway.password")
+      )
+    },
+
     name := projectName("environment"),
     commonSettings,
-    flywayUrl := "jdbc:postgresql://localhost:5432/",
-    flywayUser := "postgres",
-    flywayPassword := "",
+    flywayUrl := FlywayConf.conf.value("url"),
+    flywayUser := FlywayConf.conf.value("user"),
+    flywayPassword := FlywayConf.conf.value("password"),
     flywayLocations := Seq("classpath:db/migration"),
     libraryDependencies ++= Seq(
       postgresJDBC
