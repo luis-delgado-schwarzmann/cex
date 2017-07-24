@@ -4,10 +4,11 @@ import sbt.Keys._
 
 object Dependencies {
   lazy val organization = "com.stratio"
-  lazy val version = "0.1.0-SNAPSHOT"
-  lazy val projectName = "stratio-cex"
+  lazy val version      = "0.1.0-SNAPSHOT"
+  lazy val projectName  = "stratio-cex"
   lazy val scalaVersion = "2.11.11"
-  lazy val resolvers = Seq.empty[Resolver]
+  lazy val resolvers    = Seq.empty[Resolver]
+  lazy val crossPaths  = false
 
 
   /* SpringBoot stuff */
@@ -21,18 +22,19 @@ object Dependencies {
   lazy val postgresJDBC: ModuleID           = "org.postgresql" % "postgresql" % "42.1.3"
 
   def name(prefix: String, name: String): String = s"${prefix}-${name}"
+
 }
 
 trait Dependencies {
   def moduleSettings: Seq[SettingsDefinition] = Seq (
+
       organization in ThisBuild := Dependencies.organization,
-      version in ThisBuild := Dependencies.version,
+      version      in ThisBuild := Dependencies.version,
       scalaVersion in ThisBuild := scalaVersionUsed,
-
-      resolvers := commonResolvers,
-
-      libraryDependencies ++= mainDeps,
-      libraryDependencies ++= testDeps map (_ % "test")
+      crossPaths   in ThisBuild := Dependencies.crossPaths,
+      resolvers                 := commonResolvers,
+      libraryDependencies       ++= mainDeps,
+      libraryDependencies       ++= testDeps map (_ % "test")
 
   )
 
@@ -44,5 +46,4 @@ trait Dependencies {
   val testDeps = Seq.empty[ModuleID]
 
   val enabledPlugins = Seq.empty[AutoPlugin]
-  val disabledPlugins = Seq.empty[AutoPlugin]
 }
