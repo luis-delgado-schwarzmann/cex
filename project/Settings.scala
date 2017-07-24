@@ -1,14 +1,9 @@
+import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
 import org.flywaydb.sbt.FlywayPlugin
 
-object Settings extends Dependencies {
-  override val disabledPlugins = Seq(FlywayPlugin)
-}
+object Settings extends Dependencies
 
-object SpringBootSettings extends Dependencies {
-  override val mainDeps = Seq(Dependencies.springBoot, Dependencies.springBootStarterWeb)
-  override val testDeps = Seq(Dependencies.springBootStarterTest, Dependencies.jaywayJsonPath)
-  override val disabledPlugins = Settings.disabledPlugins
-}
+
 
 
 object PostgresSettings extends Dependencies {

@@ -1,0 +1,7 @@
+{
+  "flyway": {
+    "url": "jdbc:postgresql://localhost:5432/",
+    "user": "postgres",
+    "password": ""
+  }
+}
