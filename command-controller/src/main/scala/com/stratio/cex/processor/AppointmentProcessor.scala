@@ -1,6 +1,6 @@
 package com.stratio.cex.processor
 
-import com.stratio.cex.response.{AppointmentList, HttpResponse, Appointment => AppointmentResponse}
+import com.stratio.cex.response.{AppointmentList, Appointment => AppointmentResponse}
 import org.springframework.http.HttpStatus
 import scala.beans.BeanProperty
 
