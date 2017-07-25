@@ -6,10 +6,13 @@ object Dependencies {
   lazy val organization = "com.stratio"
   lazy val version      = "0.1.0-SNAPSHOT"
   lazy val projectName  = "stratio-cex"
-  lazy val scalaVersion = "2.11.11"
+  lazy val scalaVersion = "2.11.7"
   lazy val resolvers    = Seq.empty[Resolver]
   lazy val crossPaths  = false
 
+  /* Scala */
+  lazy val scalaTest: ModuleID              = "org.scalatest" %% "scalatest" % "2.2.6"
+  lazy val scalaXML: ModuleID               = "org.scala-lang.modules" %% "scala-xml" % "1.0.4"
 
   /* SpringBoot stuff */
   lazy val springBoot: ModuleID             = "org.springframework.boot" % "spring-boot" % "1.5.4.RELEASE"
@@ -40,10 +43,10 @@ trait Dependencies {
 
   val scalaVersionUsed = Dependencies.scalaVersion
 
-  val commonResolvers = Dependencies.resolvers
+  def commonResolvers = Dependencies.resolvers
 
-  val mainDeps = Seq.empty[ModuleID]
-  val testDeps = Seq.empty[ModuleID]
+  def mainDeps = Seq.empty[ModuleID]
+  def testDeps = Seq.empty[ModuleID]
 
-  val enabledPlugins = Seq.empty[AutoPlugin]
+  def enabledPlugins = Seq.empty[AutoPlugin]
 }
