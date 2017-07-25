@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+COMPOSE_INTERNAL_FOLDER="$DIR/docker/compose"
+
 ###########
 # Helpers #
 ###########
@@ -13,18 +16,32 @@ test_docker_compose() {
 
 start() {
     echo "Starting environment..."
-    docker-compose -f docker-compose.yml up -d --remove-orphans
+    docker-compose \
+        -f $COMPOSE_INTERNAL_FOLDER/environment.yml \
+        -f $COMPOSE_INTERNAL_FOLDER/command-controller.yml up \
+        -d --remove-orphans --build
 }
 
 
 stop() {
     echo "Stopping enviroment..."
-    docker-compose -f docker-compose.yml stop
+    docker-compose \
+        -f $COMPOSE_INTERNAL_FOLDER/environment.yml \
+        -f $COMPOSE_INTERNAL_FOLDER/command-controller.yml \
+        stop
 }
 
 clean() {
-    docker-compose -f docker-compose.yml kill
-    docker-compose -f docker-compose.yml rm -f
+
+    docker-compose \
+        -f $COMPOSE_INTERNAL_FOLDER/environment.yml \
+        -f $COMPOSE_INTERNAL_FOLDER/command-controller.yml \
+        kill
+
+    docker-compose \
+        -f $COMPOSE_INTERNAL_FOLDER/environment.yml \
+        -f $COMPOSE_INTERNAL_FOLDER/command-controller.yml \
+        rm -f
 }
 
 

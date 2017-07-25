@@ -1,15 +1,16 @@
 version: '2'
 services:
   dock-cex-postgres:
+    build: ../containers/postgres
     image: dock-cex-postgres
     container_name: dock-cex-postgres
     hostname: dock-cex-postgres
     ports:
       - 5432:5432
     volumes:
-      - ./docker/shared-folder:/tmp/shared
-      - ./src/main/resources/db/flyway:/tmp/flyway/conf
-      - ./src/main/resources/db/migration:/tmp/flyway/migration
+      - ../shared-folder:/tmp/shared
+      - ../../src/main/resources/db/flyway:/tmp/flyway/conf
+      - ../../src/main/resources/db/migration:/tmp/flyway/migration
     environment:
       - FLYWAY_SCRIPTS=/tmp/flyway/scripts
       - FLYWAY_CONF=/tmp/flyway/conf/

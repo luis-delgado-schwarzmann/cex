@@ -1,0 +1,11 @@
+version: '2'
+services:
+  command-controller:
+    image: zedfmariostratio/command-controller:0.1.0-SNAPSHOT
+    container_name: command-controller
+    hostname: command-controller
+    command:  -Dserver.port=8999
+    ports:
+     - 8999:8999
+    volumes:
+      - ../docker/shared-folder:/tmp/shared

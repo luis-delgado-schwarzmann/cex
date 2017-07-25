@@ -2,9 +2,6 @@
 
 ## Bringing it up!
 [TBD] Explanation of how it's done
-### Building images
-[TBD] Explanation of script
-`$> ./build-images.sh`
 ### Handling environment
 [TBD] Explanation of script
 #### Start
@@ -17,10 +14,8 @@
 [TBD] Explanation of what it does
 `$> ./handle-environment.sh clean`
 
-
-
-## Docker container
-[TBD] Contents of container
+## Docker containers
+[TBD] Contents
 ### Postgres (9.6.3)
 ### Flyway
 [TBD] Explanation of Flyway
@@ -38,5 +33,11 @@
 [TBD] Explanation of how to work with migration script (within the docker)
 `flyway -configFile=$FLYWAY_CONF/$FLYWAY_FILENAME -locations=filesystem:$FLYWAY_MIGRATION migrate`
 
+### Command Controller
+[TBD] Explanation of what it does
+
 ## Flyway from SBT
 [TBD] Flyway from SBT (once docker's up)
+
+## Dockerizing from SBT
+[TBD] Explaining how to publish (locally or not) a docker image
