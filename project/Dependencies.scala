@@ -11,7 +11,7 @@ object Dependencies {
   lazy val crossPaths  = false
 
   /* Scala */
-  lazy val scalaTest: ModuleID              = "org.scalatest" %% "scalatest" % "2.2.6"
+  lazy val scalaTest: ModuleID              = "org.scalatest" %% "scalatest" % "3.0.1"
   lazy val scalaXML: ModuleID               = "org.scala-lang.modules" %% "scala-xml" % "1.0.4"
 
   /* SpringBoot stuff */
