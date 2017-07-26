@@ -4,5 +4,5 @@ import sbt._
 
 object DockerSettings extends Dependencies {
   val dockerConf = settingKey[Config]("Docker configuration from file")
-  override val enabledPlugins  = Seq(JavaAppPackaging)
+  override def enabledPlugins  = super.enabledPlugins ++ Seq(JavaAppPackaging)
 }
