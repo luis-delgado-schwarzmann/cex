@@ -1,0 +1,12 @@
+version: '2'
+services:
+  docker-registry:
+    image: registry:2
+    container_name: docker-registry
+    hostname: docker-registry
+    ports:
+     - 5000:5000
+    volumes:
+      - ../shared-folder:/tmp/shared
+    restart: always
+

@@ -8,4 +8,4 @@ services:
     ports:
      - 8999:8999
     volumes:
-      - ../docker/shared-folder:/tmp/shared
+      - ../shared-folder:/tmp/shared
