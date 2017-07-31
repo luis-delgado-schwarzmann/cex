@@ -1,0 +1,11 @@
+version: '2'
+services:
+  daas-appointment:
+    image: zedfmariostratio/daas-appointment:0.1.0-SNAPSHOT
+    container_name: daas-appointment
+    hostname: daas-appointment
+    command:  -Dserver.port=9001
+    ports:
+     - 9001:9001
+    volumes:
+      - ../shared-folder:/tmp/shared

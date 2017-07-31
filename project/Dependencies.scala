@@ -16,7 +16,7 @@ object Dependencies {
 
   /* SpringBoot stuff */
   lazy val springBoot: ModuleID             = "org.springframework.boot" % "spring-boot" % "1.5.4.RELEASE"
-  lazy val springBootStarterWeb: ModuleID   = "org.springframework.boot" % "spring-boot-starter-web" % "1.5.4.RELEASE"
+  lazy val springBootStarterWeb: ModuleID   = "org.springframework.boot" % "spring-boot-starter-web" %"1.5.4.RELEASE"
   /* SpringBoot test stuff */
   lazy val springBootStarterTest: ModuleID  = "org.springframework.boot" % "spring-boot-starter-test" % "1.5.4.RELEASE"
   lazy val jaywayJsonPath: ModuleID         = "com.jayway.jsonpath" % "json-path" % "2.4.0"

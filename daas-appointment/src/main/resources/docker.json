@@ -1,0 +1,9 @@
+{
+  "username": "zedfmariostratio",
+  "repository": "index.docker.io",
+  "maintainer": "Mario Fernández <mariofernandez@stratio.com>",
+  "summary": "DaaS Apointment API",
+  "description": "[TBD]",
+  "name": "daas-appointment",
+  "ports": [9001]
+}

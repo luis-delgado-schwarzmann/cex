@@ -29,7 +29,11 @@ lazy val environment = (project in file("environment"))
     flywayLocations := Seq("classpath:db/migration")
   )
 
+lazy val common_libs = (project in file("common-libs"))
+    .settings(name := Dependencies.name(Dependencies.projectName, name.value))
+
 lazy val command_controller = (project in file("command-controller"))
+  .dependsOn(common_libs)
   .enablePlugins(JavaAppPackaging)
   .settings(SpringBootSettings.moduleSettings: _*)
   .settings(name := Dependencies.name(Dependencies.projectName, name.value))
@@ -46,7 +50,19 @@ lazy val command_controller = (project in file("command-controller"))
 
 
 
-lazy val daas_appointments = (project in file("daas-appointments"))
+
+lazy val daas_appointment = (project in file("daas-appointment"))
+  .dependsOn(common_libs)
   .enablePlugins(JavaAppPackaging)
   .settings(SpringBootSettings.moduleSettings: _*)
   .settings(name := Dependencies.name(Dependencies.projectName, name.value))
+  .settings(
+    DockerSettings.dockerConf := ConfigFactory.parseFile((resourceDirectory in Compile).value / "docker.json"),
+    maintainer         in Docker := DockerSettings.dockerConf.value.getString("maintainer"),
+    packageSummary     in Docker := DockerSettings.dockerConf.value.getString("summary"),
+    packageDescription in Docker := DockerSettings.dockerConf.value.getString("description"),
+    packageName        in Docker := DockerSettings.dockerConf.value.getString("name"),
+    dockerUsername               := Some(DockerSettings.dockerConf.value.getString("username")),
+    dockerRepository             := Some(DockerSettings.dockerConf.value.getString("repository")),
+    dockerExposedPorts           := DockerSettings.dockerConf.value.getIntList("ports").map(_.toInt)
+  )

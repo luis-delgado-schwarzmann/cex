@@ -33,6 +33,8 @@ OPTIONS
                                               (default: ${ENVIRONMENT_MS_BASE[@]}).
                       - command-controller -> defined on \$ENVIRONMENT_COMMAND_CONTROLLER
                                               (default: ${ENVIRONMENT_COMMAND_CONTROLLER[@]}).
+                      - daas-appointment   -> defined on \$ENVIRONMENT_DAAS_APPOINTMENT
+                                              (default: ${ENVIRONMENT_DAAS_APPOINTMENT[@]}).
                   Note: In order to change an environment on runtime, overwrite the associated variable.
 
 IMPORTANT
@@ -106,7 +108,7 @@ start_container() {
 }
 
 start_environment() {
-    docker-compose "$@" up -d --remove-orphans --build
+    docker-compose "$@" up -d --build
 }
 
 stop_container() {
@@ -150,6 +152,9 @@ run() {
                 ;;
                 command-controller)
                     $1_environment `expand_environment ${ENVIRONMENT_COMMAND_CONTROLLER[@]}`
+                ;;
+                daas-appointment)
+                    $1_environment `expand_environment ${ENVIRONMENT_DAAS_APPOINTMENT[@]}`
                 ;;
             esac
             ;;

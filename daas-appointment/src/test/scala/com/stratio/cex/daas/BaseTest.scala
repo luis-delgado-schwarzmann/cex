@@ -1,4 +1,4 @@
-package com.stratio.cex
+package com.stratio.cex.daas
 
 import org.scalatest.{FeatureSpec, GivenWhenThen, Matchers}
 

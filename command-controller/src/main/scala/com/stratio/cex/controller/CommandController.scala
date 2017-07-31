@@ -1,7 +1,7 @@
 package com.stratio.cex.controller
 
-import com.stratio.cex.processor.AppointmentProcessor
-import com.stratio.cex.response.{AppointmentList, Appointment => AppointmentResponse}
+import com.stratio.cex.daas.processor.AppointmentProcessor
+import com.stratio.cex.response.AppointmentList
 import org.springframework.http.{HttpStatus, ResponseEntity}
 import org.springframework.web.bind.annotation._
 

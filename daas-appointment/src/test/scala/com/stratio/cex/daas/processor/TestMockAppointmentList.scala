@@ -1,6 +1,6 @@
-package com.stratio.cex.processor
+package com.stratio.cex.daas.processor
 
-import com.stratio.cex.BaseTest
+import com.stratio.cex.daas.BaseTest
 import com.stratio.cex.response.{Appointment, AppointmentList}
 
 /**
@@ -18,7 +18,7 @@ class TestMockAppointmentList extends BaseTest {
       Given("an accessible static method for generating AppointmentList")
 
       When("is called with an identifier for generating 0 elements")
-      val result = MockAppointmentList.generate(id, 0)
+      val result = MockAppointmentList(id, 0)
 
       Then("resulting AppointmentList should be empty")
       result shouldBe an [AppointmentList]
@@ -29,7 +29,7 @@ class TestMockAppointmentList extends BaseTest {
       Given("an accessible static method for generating AppointmentList")
 
       When("is called with an identifier for generating 4 elements")
-      val result = MockAppointmentList.generate(id, 4)
+      val result = MockAppointmentList(id, 4)
 
       Then("resulting AppointmentList should contain 4 Appointment elements")
       result shouldBe an [AppointmentList]
