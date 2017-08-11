@@ -1,0 +1,11 @@
+spring:
+  cloud:
+      consul:
+        host: ${CONSUL_HOST:localhost}
+        port: ${CONSUL_PORT:8500}
+        discovery:
+          hostname: ${SPRING_DISCOVERY_HOSTNAME:localhost}
+          port: ${SPRING_DISCOVERY_PORT:8082} # same as server.port
+          preferIpAddress: ${SPRING_DISCOVERY_PREFER_IP:false}
+          queryPassing: ${SPRING_DISCOVERY_QUERY_PASSING:true}
+          instanceId: ${MESOS_TASK_ID:daas-appointment-default-task}

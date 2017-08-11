@@ -4,21 +4,23 @@ import sbt.Keys._
 
 object Dependencies {
   lazy val organization = "com.stratio"
-  lazy val version      = "0.1.0-SNAPSHOT"
+  lazy val version      = "0.2.0-SNAPSHOT"
   lazy val projectName  = "stratio-cex"
-  lazy val scalaVersion = "2.11.7"
+  lazy val scalaVersion = "2.11.8"
   lazy val resolvers    = Seq.empty[Resolver]
   lazy val crossPaths  = false
 
   /* Scala */
   lazy val scalaTest: ModuleID              = "org.scalatest" %% "scalatest" % "3.0.1"
-  lazy val scalaXML: ModuleID               = "org.scala-lang.modules" %% "scala-xml" % "1.0.4"
+  lazy val scalaXML: ModuleID               = "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 
   /* SpringBoot stuff */
-  lazy val springBoot: ModuleID             = "org.springframework.boot" % "spring-boot" % "1.5.4.RELEASE"
-  lazy val springBootStarterWeb: ModuleID   = "org.springframework.boot" % "spring-boot-starter-web" % "1.5.4.RELEASE"
+  lazy val springBoot: ModuleID             = "org.springframework.boot" % "spring-boot" % "1.5.3.RELEASE"
+  lazy val springBootStarterWeb: ModuleID   = "org.springframework.boot" % "spring-boot-starter-web" % "1.5.3.RELEASE"
+  lazy val springBootConsul: ModuleID       = "org.springframework.cloud" % "spring-cloud-starter-consul-discovery" % "1.2.1.RELEASE"
+
   /* SpringBoot test stuff */
-  lazy val springBootStarterTest: ModuleID  = "org.springframework.boot" % "spring-boot-starter-test" % "1.5.4.RELEASE"
+  lazy val springBootStarterTest: ModuleID  = "org.springframework.boot" % "spring-boot-starter-test" % "1.5.3.RELEASE"
   lazy val jaywayJsonPath: ModuleID         = "com.jayway.jsonpath" % "json-path" % "2.4.0"
 
   /* Postgresql */

@@ -1,0 +1,11 @@
+server:
+  port: ${SERVER_PORT:8082}
+
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:command-controller}
+
+
+dependencies:
+  daas:
+    appointment: daas-appointment
