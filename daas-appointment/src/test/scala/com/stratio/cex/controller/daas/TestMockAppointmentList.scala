@@ -1,4 +1,4 @@
-package com.stratio.cex.daas.processor
+package com.stratio.cex.controller.daas
 
 import com.stratio.cex.daas.BaseTest
 import com.stratio.cex.response.{Appointment, AppointmentList}

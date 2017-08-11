@@ -30,7 +30,8 @@ lazy val environment = (project in file("environment"))
   )
 
 lazy val common_libs = (project in file("common-libs"))
-    .settings(name := Dependencies.name(Dependencies.projectName, name.value))
+  .settings(name := Dependencies.name(Dependencies.projectName, name.value))
+  .settings(libraryDependencies += Dependencies.springBootConsul)
 
 lazy val command_controller = (project in file("command-controller"))
   .dependsOn(common_libs)
