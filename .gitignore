@@ -75,3 +75,8 @@ fabric.properties
 
 # target ignored
 target/
+
+# Eclipse
+.classpath
+.project
+.settings
