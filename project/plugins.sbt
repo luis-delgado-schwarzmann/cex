@@ -9,3 +9,7 @@ resolvers += "Flyway" at "https://flywaydb.org/repo"
 
 // Dependency tree
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
+
+// Eclipse IDE Integration
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.2")
+
