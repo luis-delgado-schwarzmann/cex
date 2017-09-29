@@ -21,18 +21,9 @@ class AppointmentProcessor {
 
   def getAll(id: String): Option[AppointmentList] = id match {
     case x if !x.isEmpty => {
-      val instance = discoveryService.discover(daas)
-      instance match {
-        case Some(x) => {
-          println("Accessing to " + x.getUri)
-          val response = rest.getForEntity(s"${x.getUri}/appointments?id=${id}", classOf[AppointmentList])
-          Some(response.getBody)
-        }
-        case _ => {
-          println(s"No service ${daas} found in consul ")
-          None
-        }
-      }
+      println("Accessing to " + daas)
+      val response = rest.getForEntity(s"${daas}/appointments?id=${id}", classOf[AppointmentList])
+      Some(response.getBody)
     }
     case _ => None
   }

@@ -1,6 +1,6 @@
 {
   "username": "zedfmariostratio",
-  "repository": "boot.dcos:5000",
+  "repository": "bootstrap.sanitas.stratio.com:5000",
   "maintainer": "Mario Fernández <mariofernandez@stratio.com>",
   "summary": "DaaS Apointment API",
   "description": "[TBD]",

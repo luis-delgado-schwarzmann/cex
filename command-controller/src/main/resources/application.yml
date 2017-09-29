@@ -8,4 +8,4 @@ spring:
 
 dependencies:
   daas:
-    appointment: daas-appointment
+    appointment: http://127.0.0.1:9001
