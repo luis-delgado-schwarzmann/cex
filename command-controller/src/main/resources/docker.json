@@ -4,6 +4,5 @@
   "maintainer": "Mario Fernández <mariofernandez@stratio.com>",
   "summary": "Command Controller API",
   "description": "[TBD]",
-  "name": "command-controller",
-  "ports": [8999]
+  "name": "command-controller"
 }

@@ -4,6 +4,5 @@
   "maintainer": "Mario Fernández <mariofernandez@stratio.com>",
   "summary": "DaaS Apointment API",
   "description": "[TBD]",
-  "name": "daas-appointment",
-  "ports": [9001]
+  "name": "daas-appointment"
 }
