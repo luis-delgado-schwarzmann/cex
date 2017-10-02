@@ -45,8 +45,7 @@ lazy val command_controller = (project in file("command-controller"))
     packageDescription in Docker := DockerSettings.dockerConf.value.getString("description"),
     packageName        in Docker := DockerSettings.dockerConf.value.getString("name"),
     dockerUsername               := Some(DockerSettings.dockerConf.value.getString("username")),
-    dockerRepository             := Some(DockerSettings.dockerConf.value.getString("repository")),
-    dockerExposedPorts           := DockerSettings.dockerConf.value.getIntList("ports").map(_.toInt)
+    dockerRepository             := Some(DockerSettings.dockerConf.value.getString("repository"))
   )
 
 
@@ -64,6 +63,5 @@ lazy val daas_appointment = (project in file("daas-appointment"))
     packageDescription in Docker := DockerSettings.dockerConf.value.getString("description"),
     packageName        in Docker := DockerSettings.dockerConf.value.getString("name"),
     dockerUsername               := Some(DockerSettings.dockerConf.value.getString("username")),
-    dockerRepository             := Some(DockerSettings.dockerConf.value.getString("repository")),
-    dockerExposedPorts           := DockerSettings.dockerConf.value.getIntList("ports").map(_.toInt)
+    dockerRepository             := Some(DockerSettings.dockerConf.value.getString("repository"))
   )
