@@ -20,10 +20,10 @@ pipeline {
              }
          }
 
-         stage('package'){
+         stage('test'){
              steps {
-                 sh "sbt \"project daas_appointment\" clean compile"
-                 sh "sbt \"project command_controller\" clean compile"
+                  sh "sbt \"project daas_appointment\" clean test"
+                  sh "sbt \"project command_controller\" clean test"
              }
          }
 
@@ -40,13 +40,6 @@ pipeline {
              steps {
                   sh "sbt \"project daas_appointment\" docker:publish"
                   sh "sbt \"project command_controller\" docker:publish"
-             }
-         }
-
-         stage('test'){
-             steps {
-                  sh "sbt \"project daas_appointment\" clean test"
-                  sh "sbt \"project command_controller\" clean test"
              }
          }
 
