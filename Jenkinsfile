@@ -4,7 +4,7 @@ pipeline {
          stage('pre-reqs'){
              steps {
                   //prepare our slave container
-                  sh "apt-get -qq update && apt-get -y install apt-transport-https openjdk-8-jre"
+                  sh "apt-get -qq update && apt-get -y install apt-transport-https openjdk-8-jre openjdk-8-jdk"
                   sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
                       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
                       apt-get -qq update && \
