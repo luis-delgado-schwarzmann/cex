@@ -4,7 +4,7 @@ import sbt.Keys._
 
 object Dependencies {
   lazy val organization = "com.stratio"
-  lazy val version      = "0.3.0"
+  lazy val version      = "0.4.0-SNAPSHOT"
   lazy val projectName  = "stratio-cex"
   lazy val scalaVersion = "2.11.8"
   lazy val resolvers    = Seq.empty[Resolver]
