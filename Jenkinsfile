@@ -31,7 +31,7 @@ pipeline {
 
          stage('test'){
              steps {
-                  sh "Current Git Branch: `git branch | grep -e \"^*\" | cut -d \" \" -f 2`"
+                  sh "echo \"Current Git Branch: `git branch | grep -e \"^*\" | cut -d \" \" -f 2`\""
                   sh "sbt \"project daas-appointment\" clean test"
                   sh "sbt \"project command-controller\" clean test"
              }
