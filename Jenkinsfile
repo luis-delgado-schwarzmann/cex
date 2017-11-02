@@ -23,10 +23,7 @@ pipeline {
                       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823"
                   sh "apt-get -y update > /dev/null"
 
-                  sh "mkdir -p /etc/docker/"
-                  sh "echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json"
                   sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
-
                   sh "apt-get -y install docker-ce sbt=0.13.8 > /dev/null"
              }
          }
