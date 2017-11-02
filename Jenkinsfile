@@ -8,7 +8,7 @@ pipeline {
                   sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
                       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
                       apt-get -qq update && \
-                      apt-get -qq -y install sbt"
+                      apt-get -qq -y install sbt=0.13.16"
              }
          }
 
@@ -22,8 +22,8 @@ pipeline {
 
          stage('test'){
              steps {
-                  sh "sbt \"project daas_appointment\" clean test"
-                  sh "sbt \"project command_controller\" clean test"
+                  sh "sbt \"project daas-appointment\" clean test"
+                  sh "sbt \"project command-controller\" clean test"
              }
          }
 
@@ -31,15 +31,15 @@ pipeline {
              steps {
                // set the version of the build artifact to the Jenkins BUILD_NUMBER so you can
                // map artifacts to Jenkins builds
-                  sh "sbt \"project daas_appointment\" docker:stage"
-                  sh "sbt \"project command_controller\" docker:stage"
+                  sh "sbt \"project daas-appointment\" docker:stage"
+                  sh "sbt \"project command-controller\" docker:stage"
              }
          }
 
          stage('push image'){
              steps {
-                  sh "sbt \"project daas_appointment\" docker:publish"
-                  sh "sbt \"project command_controller\" docker:publish"
+                  sh "sbt \"project daas-appointment\" docker:publish"
+                  sh "sbt \"project command-controller\" docker:publish"
              }
          }
 
