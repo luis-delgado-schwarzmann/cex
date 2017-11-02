@@ -16,7 +16,9 @@ pipeline {
                       software-properties-common \
                       openjdk-8-jre \
                       openjdk-8-jdk \
-                      bc"
+                      bc \
+                      apt-utils \
+                      cron"
                   sh "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
                   sh "add-apt-repository \
                       \"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
