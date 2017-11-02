@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'ubuntu:16.04'
-            args '-v $HOME/.m2:/root/.m2 -v $HOME/.ivy2:/root/.ivy2'
+            args '-v $HOME/.m2:/root/.m2 -v $HOME/.ivy2:/root/.ivy2 -v /var/run/docker.sock:/var/run/docker.sock --privileged'
         }
     }
     stages {
@@ -22,11 +22,12 @@ pipeline {
                   sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
                       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823"
                   sh "apt-get -y update > /dev/null"
-                  sh "apt-get -y install docker-ce sbt=0.13.8 > /dev/null"
-                  sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
+
                   sh "mkdir -p /etc/docker/"
                   sh "echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json"
-                  sh "service docker restart"
+                  sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
+
+                  sh "apt-get -y install docker-ce sbt=0.13.8 > /dev/null"
              }
          }
 
