@@ -1,6 +1,6 @@
 {
   "username": "zedfmariostratio",
-  "repository": "registry:5000",
+  "repository": "http://registry:5000",
   "maintainer": "Mario Fernández <mariofernandez@stratio.com>",
   "summary": "Command Controller API",
   "description": "[TBD]",

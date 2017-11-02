@@ -9,7 +9,7 @@ pipeline {
          stage('pre-reqs'){
              steps {
                   //prepare our slave container
-                  sh "apt-get -qq update && apt-get -qq -y install \
+                  sh "apt-get -qq update && apt-get -qq install \
                       apt-transport-https \
                       ca-certificates \
                       curl \
@@ -25,14 +25,13 @@ pipeline {
                   sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
                       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
                       apt-get -qq update"
-                  sh "apt-get -qq -y install docker-ce sbt=0.13.8"
+                  sh "apt-get -qq install docker-ce sbt=0.13.8"
                   sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
              }
          }
 
          stage('test'){
              steps {
-                  sh "echo \"Current Git Branch: `git branch | grep -e \"^*\" | cut -d \" \" -f 2`\""
                   sh "sbt \"project daas-appointment\" clean test"
                   sh "sbt \"project command-controller\" clean test"
              }
