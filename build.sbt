@@ -1,5 +1,4 @@
 import com.typesafe.config.{Config, ConfigFactory}
-import scala.collection.JavaConversions._
 
 /*----------------*/
 /* BUILDS SECTION */

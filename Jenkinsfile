@@ -1,27 +1,9 @@
 pipeline {
-    agent { docker 'ubuntu:16.04' }
+    agent { docker 'sbs-ubuntu:16.04' }
     stages {
-         stage('pre-reqs'){
-             steps {
-                  //prepare our slave container
-                  sh "apt-get -qq update && apt-get -qq -y install apt-transport-https openjdk-8-jre openjdk-8-jdk bc"
-                  sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
-                      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
-                      apt-get -qq update && \
-                      apt-get -qq -y install sbt=0.13.8"
-             }
-         }
-
-         stage('checkout'){
-             steps {
-                  // Get some code from a GitHub repository
-                  git url: 'https://github.com/luis-delgado-schwarzmann/cex'
-                  sh 'git clean -fdx; sleep 4;'
-             }
-         }
-
          stage('test'){
              steps {
+                  sh "ls -la"
                   sh "sbt \"project daas-appointment\" clean test"
                   sh "sbt \"project command-controller\" clean test"
              }
