@@ -9,28 +9,24 @@ pipeline {
          stage('pre-reqs'){
              steps {
                   //prepare our slave container
-                  sh "apt-get -qq update && apt-get -qq install apt-utils cron"
-                  sh "apt-get -qq update && apt-get -qq install \
-                      apt-transport-https \
-                      ca-certificates \
-                      curl \
-                      software-properties-common \
-                      openjdk-8-jre \
-                      openjdk-8-jdk \
-                      bc "
+                  sh "apt-get -y update > /dev/null"
+                  sh "apt-get -y install apt-utils cron > /dev/null"
+                  sh "apt-get -y update > /dev/null"
+                  sh "apt-get -y install apt-transport-https ca-certificates curl \
+                      software-properties-common openjdk-8-jre openjdk-8-jdk bc > /dev/null "
                   sh "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
                   sh "add-apt-repository \
                       \"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
                       `lsb_release -cs` \
                       stable\""
                   sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
-                      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
-                      apt-get -qq update"
-                  sh "apt-get -qq install docker-ce sbt=0.13.8"
+                      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823"
+                  sh "apt-get -y update > /dev/null"
+                  sh "apt-get -y install docker-ce sbt=0.13.8 > /dev/null"
                   sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
-                  sh "mkdir -p /etc/docker/ && \
-                      echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json && \
-                      service docker restart"
+                  sh "mkdir -p /etc/docker/"
+                  sh "echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json"
+                  sh "service docker restart"
              }
          }
 
