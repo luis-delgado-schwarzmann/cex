@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'sbs-ubuntu:16.04' }
+    agent { image 'sbs-ubuntu:16.04' }
     stages {
          stage('test'){
              steps {
