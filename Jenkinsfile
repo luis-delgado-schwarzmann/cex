@@ -9,6 +9,7 @@ pipeline {
          stage('pre-reqs'){
              steps {
                   //prepare our slave container
+                  sh "apt-get -qq update && apt-get -qq install apt-utils cron"
                   sh "apt-get -qq update && apt-get -qq install \
                       apt-transport-https \
                       ca-certificates \
@@ -16,9 +17,7 @@ pipeline {
                       software-properties-common \
                       openjdk-8-jre \
                       openjdk-8-jdk \
-                      bc \
-                      apt-utils \
-                      cron"
+                      bc "
                   sh "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
                   sh "add-apt-repository \
                       \"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -29,7 +28,9 @@ pipeline {
                       apt-get -qq update"
                   sh "apt-get -qq install docker-ce sbt=0.13.8"
                   sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
-                  sh "echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json && service docker restart"
+                  sh "mkdir -p /etc/docker/ && \
+                      echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json && \
+                      service docker restart"
              }
          }
 
