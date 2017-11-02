@@ -20,7 +20,7 @@ pipeline {
                   sh "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
                   sh "add-apt-repository \
                       \"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-                      $(lsb_release -cs) \
+                      `lsb_release -cs` \
                       stable\""
                   sh "echo \"deb https://dl.bintray.com/sbt/debian /\" | tee -a /etc/apt/sources.list.d/sbt.list && \
                       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
