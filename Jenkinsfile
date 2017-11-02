@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'ubuntu:16.04'
-            args '-v $HOME/.m2:/root/.m2'
+            args '-v $HOME/.m2:/root/.m2 -v $HOME/.ivy2:/root/.ivy2'
         }
     }
     stages {
@@ -29,6 +29,7 @@ pipeline {
                       apt-get -qq update"
                   sh "apt-get -qq install docker-ce sbt=0.13.8"
                   sh "echo \"`ip neigh | cut -d \" \" -f 1` registry\" >> /etc/hosts"
+                  sh "echo '{ \"insecure-registries\" : [\"registry:5000\"] }' > /etc/docker/daemon.json && service docker restart"
              }
          }
 
